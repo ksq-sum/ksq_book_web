@@ -1,0 +1,31 @@
+.magicCard {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  height: 100%;
+  width: 100%;
+  
+  &:hover {
+    z-index: 2;
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+}
+
+.glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+} 

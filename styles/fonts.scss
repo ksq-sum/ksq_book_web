@@ -1,0 +1,16 @@
+/* 英文字体 - 使用自定义字体 */
+@font-face {
+  font-family: 'English Font';
+  src: url('/fonts/Bodoni_Moda/static/BodoniModa_28pt-Black.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-007F, U+0080-00FF, U+0100-017F; /* 仅应用于英文字符 */
+}
+
+/* 默认字体组合 */
+:root {
+  --font-english: 'English Font', serif;
+  --font-chinese: "Microsoft YaHei";
+  --font-family: var(--font-english), var(--font-chinese);
+} 

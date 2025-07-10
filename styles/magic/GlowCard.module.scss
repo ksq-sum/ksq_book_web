@@ -1,0 +1,68 @@
+.glowCard {
+  position: relative;
+  background: rgba(20, 20, 20, 0.8);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 1;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, var(--glow-color), transparent 70%);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover {
+    &:before {
+      opacity: 0.2;
+    }
+    
+    .glowEffect {
+      opacity: 1;
+    }
+  }
+}
+
+.glowEffect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--glow-color), transparent);
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: rgba(62, 139, 255, 0.1);
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+  color: var(--accent, #3e8bff);
+  font-size: 1.5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+} 

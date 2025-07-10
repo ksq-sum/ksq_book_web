@@ -1,0 +1,975 @@
+.homeFull {
+  width: 100%;
+  height: 100%;
+}
+
+/* 滚动导航 */
+.fullpageNav {
+  position: fixed;
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
+  z-index: 90;
+  
+  @media (max-width: 768px) {
+    right: 1rem;
+  }
+  
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  li {
+    width: 12px;
+    height: 12px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.2);
+      
+      .tooltip {
+        opacity: 1;
+        transform: translateX(-10px);
+      }
+    }
+    
+    &.active {
+      span:first-child {
+        transform: scale(1.5);
+        background-color: var(--accent);
+      }
+    }
+    
+    span:first-child {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      transition: all 0.3s ease;
+    }
+  }
+  
+  .tooltip {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%) translateX(20px);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+}
+
+/* 通用全屏部分样式 */
+.fullSection {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.5s ease;
+  
+  & > div {
+    width: 100%;
+  }
+}
+
+/* Hero Section */
+.hero {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  
+  /* 添加平滑过渡 */
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.loadingContainer {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  
+  /* 添加平滑过渡 */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.auroraWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #ffffff; /* 基础背景色 */
+  
+  /* 确保Aurora组件覆盖整个区域 */
+  & > div {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+}
+
+.heroContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 2; /* 确保内容在Aurora效果之上 */
+  padding: 100px 0;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 80px 0;
+  }
+  
+  /* 文本容器过渡效果 */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.heroText {
+  h1 {
+    font-size: 5rem;
+    line-height: 1.1;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #0f0f0f; /* 黑色文本 */
+    text-shadow: none; /* 移除文本阴影 */
+    
+    @media (max-width: 1024px) {
+      font-size: 4rem;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 3.5rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+.heroTitle {
+  font-size: 5rem;
+  line-height: 1.1;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #0f0f0f; /* 黑色文本 */
+  text-shadow: none; /* 移除文本阴影 */
+  
+  @media (max-width: 1024px) {
+    font-size: 4rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 3.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 2.5rem;
+  }
+}
+
+.makeItLike {
+  color: #0f0f0f; /* 黑色文本 */
+  font-size: 60px;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.reallyGoodWrapper {
+  text-align: right;
+  padding-right: 10%;
+  
+  @media (max-width: 1440px) {
+    padding-right: 5%;
+  }
+  
+  @media (max-width: 768px) {
+    text-align: left;
+    padding-right: 0;
+    margin-top: 0.5rem;
+  }
+}
+
+.reallyGood {
+  font-size: 60px;
+  display: inline-block;
+  color: #0f0f0f; /* 黑色文本 */
+  
+  // @media (max-width: 768px) {
+  //   margin-left: 2rem;
+  // }
+  
+  // @media (max-width: 480px) {
+  //   margin-left: 1rem;
+  // }
+}
+
+.heroCta {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
+}
+
+.secondaryBtn {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* 改为白色边框 */
+  border-radius: 4px;
+  font-weight: 600;
+  color: #fff; /* 改为白色文字 */
+  background: rgba(255, 255, 255, 0.1); /* 半透明白色背景 */
+  backdrop-filter: blur(5px); /* 添加模糊效果 */
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #fff;
+    transform: translateY(-2px);
+  }
+}
+
+.heroVisual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  
+  /* 文本容器过渡效果 */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.profileImage {
+  width: 320px;
+  height: 320px;
+  position: relative;
+  
+  @media (max-width: 1024px) {
+    width: 280px;
+    height: 280px;
+  }
+  
+  @media (max-width: 768px) {
+    width: 240px;
+    height: 240px;
+  }
+}
+
+.profileCircle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  border: 8px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  animation: float 6s ease-in-out infinite;
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+}
+
+/* Overview Section */
+.overview {
+  padding: 100px 0;
+  background-color: #000000;
+  color: #ffffff;
+  
+  @media (max-width: 768px) {
+    padding: 80px 0;
+  }
+  
+  /* 为section添加过渡效果 */
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+  
+  /* 交错显示各个部分 */
+  &.overview { animation-delay: 0.1s; }
+}
+
+.overviewContent {
+  h2 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+  }
+  
+  /* 文本容器过渡效果 */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.overviewGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  
+  @media (max-width: 1024px) {
+    gap: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  /* 文本容器过渡效果 */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.overviewText {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+  
+  /* 文本容器过渡效果 */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.skills {
+  height: auto;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+/* Projects Section */
+.projects {
+  padding: 100px 0;
+  background-color: #ffffff;
+  color: #000000;
+  
+  @media (max-width: 768px) {
+    padding: 80px 0;
+  }
+  
+  /* 为section添加过渡效果 */
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+  
+  /* 交错显示各个部分 */
+  &.projects { animation-delay: 0.2s; }
+}
+
+.sectionHeader {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 5rem;
+  
+  h2 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
+  }
+  
+  /* 文本容器过渡效果 */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.sectionSubtitle {
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+.featuredProjects {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  margin-bottom: 3rem;
+  
+  @media (max-width: 768px) {
+    gap: 4rem;
+  }
+  
+  /* 文本容器过渡效果 */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.featuredProject {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  &:nth-child(even) {
+    @media (min-width: 769px) {
+      .projectImage {
+        order: 2;
+      }
+      
+      .projectInfo {
+        order: 1;
+      }
+    }
+  }
+}
+
+.projectImage {
+  position: relative;
+  height: 25rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  @media (max-width: 768px) {
+    height: 20rem;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.projectPlaceholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #f0f0f0, #f8f8f8);
+}
+
+.projectTech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  
+  span {
+    padding: 0.3rem 1rem;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+}
+
+.projectInfo {
+  h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* 文本容器过渡效果 */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.projectLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.projectLink {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  position: relative;
+  
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+  }
+  
+  &:hover {
+    &:after {
+      width: 100%;
+    }
+    
+    span {
+      transform: translateX(3px);
+    }
+  }
+  
+  span {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+}
+
+.viewAllWrapper {
+  text-align: center;
+  margin-top: 4rem;
+  
+  /* 文本容器过渡效果 */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.viewAll {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  position: relative;
+  
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+  }
+  
+  &:hover {
+    &:after {
+      width: 100%;
+    }
+    
+    span {
+      transform: translateX(5px);
+    }
+  }
+  
+  span {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+}
+
+/* Clients Section */
+.clients {
+  padding: 100px 0;
+  background-color: #000000;
+  color: #ffffff;
+  
+  @media (max-width: 768px) {
+    padding: 80px 0;
+  }
+  
+  /* 为section添加过渡效果 */
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+  
+  /* 交错显示各个部分 */
+  &.clients { animation-delay: 0.3s; }
+}
+
+.clientsTitle {
+  font-size: 3rem;
+  margin-bottom: 4rem;
+  text-align: center;
+  
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  /* 文本容器过渡效果 */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.clientsGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* 文本容器过渡效果 */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.clientLogo {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.logoPlaceholder {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+/* Approach Section */
+.approach {
+  padding: 100px 0;
+  background-color: #ffffff;
+  color: #000000;
+  
+  @media (max-width: 768px) {
+    padding: 80px 0;
+  }
+  
+  /* 为section添加过渡效果 */
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+  
+  /* 交错显示各个部分 */
+  &.approach { animation-delay: 0.4s; }
+}
+
+.approachContent {
+  max-width: 800px;
+  margin: 0 auto 5rem;
+  
+  h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
+  }
+  
+  /* 文本容器过渡效果 */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.approachText {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  opacity: 0.8;
+  
+  /* 文本容器过渡效果 */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.processItems {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+  
+  /* 文本容器过渡效果 */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.processItem {
+  padding: 2rem;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.8;
+  }
+}
+
+.processIcon {
+  font-size: 2rem;
+}
+
+/* Showcase Section */
+.showcase {
+  padding: 100px 0;
+  background-color: #000000;
+  color: #ffffff;
+  
+  @media (max-width: 768px) {
+    padding: 80px 0;
+  }
+  
+  /* 为section添加过渡效果 */
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+  
+  /* 交错显示各个部分 */
+  &.showcase { animation-delay: 0.5s; }
+}
+
+.showcaseGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+  
+  /* 文本容器过渡效果 */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.showcaseItem {
+  h3 {
+    font-size: 1.8rem;
+    margin: 1.5rem 0 0.5rem;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    opacity: 0.7;
+  }
+  
+  /* 文本容器过渡效果 */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.showcaseImage {
+  position: relative;
+  width: 100%;
+  padding-top: 75%; /* 控制宽高比 */
+}
+
+.showcasePlaceholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+}
+
+/* Contact Section */
+.contact {
+  padding: 150px 0;
+  background-color: #ffffff;
+  color: #000000;
+  
+  @media (max-width: 768px) {
+    padding: 100px 0;
+  }
+  
+  /* 为section添加过渡效果 */
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+  
+  /* 交错显示各个部分 */
+  &.contact { animation-delay: 0.6s; }
+}
+
+.contactContent {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  
+  h2 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 3rem;
+    
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
+  }
+  
+  /* 文本容器过渡效果 */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.contactCta {
+  margin-top: 2rem;
+}
+
+/* Magic UI展示部分 */
+.magicSection {
+  padding: 8rem 0;
+  background-color: #050505;
+  
+  @media (max-width: 768px) {
+    padding: 5rem 0;
+  }
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 4rem 0;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.buttonShowcase {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 4rem;
+  flex-wrap: wrap;
+  
+  @media (max-width: 640px) {
+    gap: 1rem;
+  }
+}
+
+/* 项目预览部分 */
+.projectsPreview {
+  padding: 8rem 0;
+  
+  @media (max-width: 768px) {
+    padding: 5rem 0;
+  }
+}
+
+.viewAllLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0 auto;
+  width: fit-content;
+  
+  .arrow {
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover {
+    .arrow {
+      transform: translateX(5px);
+    }
+  }
+}
+
+.shimmerBtn {
+  color: #fff;
+  font-weight: 600;
+  min-width: 140px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 0.9rem 1.8rem;
+  letter-spacing: 0.5px;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.arrowIcon {
+  display: inline-block;
+  margin-left: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.shimmerBtn:hover .arrowIcon {
+  transform: translateX(5px);
+}
+
+/* 渐进出现效果 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 为section添加过渡效果 */
+.overview, .projects, .clients, .approach, .showcase, .contact {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+  
+  /* 交错显示各个部分 */
+  &.overview { animation-delay: 0.1s; }
+  &.projects { animation-delay: 0.2s; }
+  &.clients { animation-delay: 0.3s; }
+  &.approach { animation-delay: 0.4s; }
+  &.showcase { animation-delay: 0.5s; }
+  &.contact { animation-delay: 0.6s; }
+} 

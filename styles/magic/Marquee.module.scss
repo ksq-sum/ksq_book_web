@@ -1,0 +1,17 @@
+.marqueeContainer {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.marqueeInner {
+  display: flex;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  position: relative;
+}
+
+.marqueeItem {
+  display: inline-flex;
+  flex-shrink: 0;
+} 
